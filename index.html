@@ -24,9 +24,19 @@
 
 <body>
     <div>
-        <input id="one" type="button" value="click" onclick="this.disabled=true; document.getElementById('two').disabled=false;" disabled>
-        <input id="two" type="button" value="clack" onclick="this.disabled=true; document.getElementById('one').disabled=false;">
+        <input id="one" type="button" value="click" onclick="this.disabled=true; document.getElementById('two').disabled=false; document.cookie = 'dis=1';">
+        <input id="two" type="button" value="clack" onclick="this.disabled=true; document.getElementById('one').disabled=false; document.cookie = 'dis=2';">
     </div>
+    <script>
+      if (document.cookie == "dis=1") {
+        document.getElementById('one').disabled=true;
+        document.getElementById('two').disabled=false;
+      }
+      else {
+        document.getElementById('two').disabled=true;
+        document.getElementById('one').disabled=false;
+      }
+    </script>
 </body>
 
 </html>
