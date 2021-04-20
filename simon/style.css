@@ -1,0 +1,41 @@
+body {
+    background-color: #c1d3e3;
+    font-family: "Lucida Console", Monaco, monospace;
+    text-align: center;
+}
+
+main {
+    margin: 50px auto 50px;
+}
+
+table {
+    border-collapse: collapse;
+    margin: auto;
+}
+
+caption {
+    padding-bottom: 10px;
+}
+
+td {
+    width: 200px;
+    height: 200px;
+    transition: all 0.5s;
+}
+
+a {
+    color: #0000ff;
+}
+
+a:hover {
+    color: #ff0000;
+}
+
+#new {
+    float: left;
+}
+
+#level {
+    float: right;
+    transition: all 0.2s;
+}

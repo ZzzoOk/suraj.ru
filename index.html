@@ -2,41 +2,37 @@
 <html>
 
 <head>
-    <meta charset="utf-8">
-    <title>Hi, ZzzoOk!</title>
-    <style>
-        div {
-            margin: 100px auto;
-            width: 200px;
-            text-align: center;
-            border: 1px solid black;
-            background: #ffaffa;
-        }
-
-        input {
-            display: block;
-            margin: 50px auto;
-            width: 100px;
-            height: 30px;
-        }
-    </style>
+	<title>Becoming</title>
+	<link rel="stylesheet" href="style.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 
 <body>
-    <div>
-        <input id="one" type="button" value="click" onclick="this.disabled=true; document.getElementById('two').disabled=false; document.cookie = 'dis=1';">
-        <input id="two" type="button" value="clack" onclick="this.disabled=true; document.getElementById('one').disabled=false; document.cookie = 'dis=2';">
-    </div>
-    <script>
-      if (document.cookie == "dis=1") {
-        document.getElementById('one').disabled=true;
-        document.getElementById('two').disabled=false;
-      }
-      else {
-        document.getElementById('two').disabled=true;
-        document.getElementById('one').disabled=false;
-      }
-    </script>
+	<header>
+		<h1>suraj</h1>
+	</header>
+	<main>
+		<div>
+			<a href="http://thght.ru/">мой блог</a>
+		</div>
+		<div>
+			<a href="/math">упражнения для ума</a>
+		</div>
+		<div>
+			<a href="#" onclick="$('#hidden').toggle(500);">упражнения для памяти</a>
+		</div>
+		<div id="hidden">
+			<a href="/imt">матрица памяти</a>
+			<a href="/n-back">задача n-назад</a><br><br>
+			<a href="/simon">саймон</a>
+		</div>
+		<div>
+			<a href="/eye-test">eye-test</a>
+		</div>
+	</main>
+	<footer>
+		<a href="https://t.me/ZzzoOk">ZzzoOk</a>
+	</footer>
 </body>
 
 </html>

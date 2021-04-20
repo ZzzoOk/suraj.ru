@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>N-back</title>
+	<link rel="stylesheet" href="style.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="game.js"></script>
+</head>
+
+<body>
+	<header>
+		<h1><a href='/'>suraj</a></h1>
+	</header>
+	<main>
+		<table>
+			<caption>
+				<button id="new">NEW</button>
+				<label for="nback">N-back:</label>
+				<input id="nback" type="number" value="2" min="2" max='99'>
+				<label for="numbers">Use numbers:</label>
+				<input type="checkbox" id="numbers">
+				<label id="score">Score: 0</label>
+			</caption>
+			<tbody id="field"></tbody>
+		</table>
+		<button id="item" class="bottom">ITEM</button>
+		<button id="position" class="bottom">POSITION</button>
+	</main>
+	<footer>
+		<a href="https://t.me/ZzzoOk">ZzzoOk</a>
+	</footer>
+</body>
+
+</html>
