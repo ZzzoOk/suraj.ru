@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { HashRouter as Router, Route } from 'react-router-dom';
 import './App.css'
 import Main from './main/Main'
 import Imt from './imt/Imt'
