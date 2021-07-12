@@ -1,0 +1,16 @@
+#main {
+	width: 320px;
+	margin: 20px auto 20px;
+	padding-bottom: 20px;
+	border-radius: 32px;
+	background-color: #c1d3e3;
+}
+
+#main div {
+	padding-top: 20px;
+}
+
+#hidden {
+	display: none;
+	transition: all 0.5s;
+}
