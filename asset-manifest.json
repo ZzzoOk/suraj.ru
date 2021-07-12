@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/suraj.ru/static/css/main.8b6f946c.chunk.css",
+    "main.js": "/suraj.ru/static/js/main.35cef58a.chunk.js",
+    "main.js.map": "/suraj.ru/static/js/main.35cef58a.chunk.js.map",
+    "runtime-main.js": "/suraj.ru/static/js/runtime-main.b471c1a8.js",
+    "runtime-main.js.map": "/suraj.ru/static/js/runtime-main.b471c1a8.js.map",
+    "static/js/2.b2631453.chunk.js": "/suraj.ru/static/js/2.b2631453.chunk.js",
+    "static/js/2.b2631453.chunk.js.map": "/suraj.ru/static/js/2.b2631453.chunk.js.map",
+    "static/js/3.18f3a464.chunk.js": "/suraj.ru/static/js/3.18f3a464.chunk.js",
+    "static/js/3.18f3a464.chunk.js.map": "/suraj.ru/static/js/3.18f3a464.chunk.js.map",
+    "index.html": "/suraj.ru/index.html",
+    "static/css/main.8b6f946c.chunk.css.map": "/suraj.ru/static/css/main.8b6f946c.chunk.css.map",
+    "static/js/2.b2631453.chunk.js.LICENSE.txt": "/suraj.ru/static/js/2.b2631453.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.b471c1a8.js",
+    "static/js/2.b2631453.chunk.js",
+    "static/css/main.8b6f946c.chunk.css",
+    "static/js/main.35cef58a.chunk.js"
+  ]
+}
