@@ -1,22 +1,15 @@
 {
   "files": {
-    "main.css": "/suraj.ru/static/css/main.8b6f946c.chunk.css",
-    "main.js": "/suraj.ru/static/js/main.384cbe3d.chunk.js",
-    "main.js.map": "/suraj.ru/static/js/main.384cbe3d.chunk.js.map",
-    "runtime-main.js": "/suraj.ru/static/js/runtime-main.b471c1a8.js",
-    "runtime-main.js.map": "/suraj.ru/static/js/runtime-main.b471c1a8.js.map",
-    "static/js/2.9096422e.chunk.js": "/suraj.ru/static/js/2.9096422e.chunk.js",
-    "static/js/2.9096422e.chunk.js.map": "/suraj.ru/static/js/2.9096422e.chunk.js.map",
-    "static/js/3.18f3a464.chunk.js": "/suraj.ru/static/js/3.18f3a464.chunk.js",
-    "static/js/3.18f3a464.chunk.js.map": "/suraj.ru/static/js/3.18f3a464.chunk.js.map",
-    "index.html": "/suraj.ru/index.html",
-    "static/css/main.8b6f946c.chunk.css.map": "/suraj.ru/static/css/main.8b6f946c.chunk.css.map",
-    "static/js/2.9096422e.chunk.js.LICENSE.txt": "/suraj.ru/static/js/2.9096422e.chunk.js.LICENSE.txt"
+    "main.css": "/static/css/main.40e64652.css",
+    "main.js": "/static/js/main.1009ed47.js",
+    "static/js/787.92b0b067.chunk.js": "/static/js/787.92b0b067.chunk.js",
+    "index.html": "/index.html",
+    "main.40e64652.css.map": "/static/css/main.40e64652.css.map",
+    "main.1009ed47.js.map": "/static/js/main.1009ed47.js.map",
+    "787.92b0b067.chunk.js.map": "/static/js/787.92b0b067.chunk.js.map"
   },
   "entrypoints": [
-    "static/js/runtime-main.b471c1a8.js",
-    "static/js/2.9096422e.chunk.js",
-    "static/css/main.8b6f946c.chunk.css",
-    "static/js/main.384cbe3d.chunk.js"
+    "static/css/main.40e64652.css",
+    "static/js/main.1009ed47.js"
   ]
 }
