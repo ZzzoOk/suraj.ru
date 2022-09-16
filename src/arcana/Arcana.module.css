@@ -1,0 +1,10 @@
+main div {
+    width: 300px;
+    margin: auto;
+    text-align: left;
+    font-size: 1.3rem;
+}
+
+input {
+    font-size: 1.3rem;
+}

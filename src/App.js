@@ -1,4 +1,4 @@
-import { HashRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Main from './main/Main';
 import Imt from './imt/Imt';
 import Nback from './nback/Nback';
