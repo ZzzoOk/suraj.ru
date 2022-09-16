@@ -51,8 +51,8 @@ const Arcana = () => {
 				<style>{'body { background-color: #c1d3e3; }'}</style>
 			</header>
 			<main>
-				<input type="date" max="9999-12-31" value={date} onChange={e => setDate(e.target.value)}></input><br /><br />
-				<div>
+				<input type="date" max="9999-12-31" value={date} onChange={e => setDate(e.target.value)} className={styles.date}></input><br /><br />
+				<div className={styles.arcana}>
 					<p>1) {arcana[+day]}</p>
 					<p>2) {arcana[+month]}</p>
 					<p>3) {arcana[+year]}</p>
