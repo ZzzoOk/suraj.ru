@@ -1,126 +1,127 @@
-import React from 'react';
-import styles from './Simon.module.css';
+import { React, useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
+import styles from './Simon.module.css';
 
-let level = 1;
-let queue = [];
-let processing = false;
-let timer;
+const Simon = () => {
+	const [level, setLevel] = useState(0);
+	const [isDisabled, setDisabled] = useState(true);
+	const [redColor, setRedColor] = useState();
+	const [greenColor, setGreenColor] = useState();
+	const [blueColor, setBlueColor] = useState();
+	const [yellowColor, setYellowColor] = useState();
+	let queue = [];
+	let processing = false;
+	let timer = [];
 
-class Simon extends React.Component {
-	constructor(props) {
-		super(props);
-	}
-
-	red = () => {
-		document.getElementById('red').style.backgroundColor = '#f78b6e';
+	const red = () => {
+		setRedColor('#f78b6e');
 
 		timer.push(setTimeout(() => {
-			document.getElementById('red').style.backgroundColor = '#f45325';
+			setRedColor('#f45325');
 			timer.shift();
 		}, 500));
 	}
 
-	green = () => {
-		document.getElementById('green').style.backgroundColor = '#97df07';
+	const green = () => {
+		setGreenColor('#97df07');
 
 		timer.push(setTimeout(() => {
-			document.getElementById('green').style.backgroundColor = '#81bd06';
+			setGreenColor('#81bd06');
 			timer.shift();
 		}, 500));
 	}
 
-	blue = () => {
-		document.getElementById('blue').style.backgroundColor = '#69cdfc';
+	const blue = () => {
+		setBlueColor('#69cdfc');
 
 		timer.push(setTimeout(() => {
-			document.getElementById('blue').style.backgroundColor = '#05a5ef';
+			setBlueColor('#05a5ef');
 			timer.shift();
 		}, 500));
 	}
 
-	yellow = () => {
-		document.getElementById('yellow').style.backgroundColor = '#ffd466';
+	const yellow = () => {
+		setYellowColor('#ffd466');
 
 		timer.push(setTimeout(() => {
-			document.getElementById('yellow').style.backgroundColor = '#ffba07';
+			setYellowColor('#ffba07');
 			timer.shift();
 		}, 500));
 	}
 
-	check = (color) => {
-		if (processing && queue.pop() != color) {
+	const check = (color) => {
+		if (processing && queue.pop() !== color) {
 			alert('GAME OVER!');
 
-			level = 1;
+			setLevel(1);
 			queue = [];
 			processing = false;
 
-			document.getElementById(styles.level).innerText = 'Level: 0';
+			setLevel(0);
 
 			return;
 		}
 
 		switch (color) {
 			case 0:
-				this.red();
+				red();
 				break;
 			case 1:
-				this.green();
+				green();
 				break;
 			case 2:
-				this.blue();
+				blue();
 				break;
 			case 3:
-				this.yellow();
+				yellow();
+				break;
+			default:
 				break;
 		}
 
 		if (processing && queue.length < 1) {
-			++level;
+			setLevel(level + 1);
 
 			timer.push(setTimeout(() => {
-				this.init();
+				init();
 				timer.shift();
 			}, 1500));
 		}
 	}
 
-	componentDidMount() {
-		document.getElementById(styles.new).disabled = true;
-
+	useEffect(() => {
 		timer = [];
-		let td = document.getElementsByTagName('td');
 
 		timer.push(setTimeout(() => {
-			td[0].style.backgroundColor = '#f45325';
+			setRedColor('#f45325');
 			timer.shift();
 		}, 500));
 		timer.push(setTimeout(() => {
-			td[1].style.backgroundColor = '#81bd06';
+			setGreenColor('#81bd06');
 			timer.shift();
 		}, 1000));
 		timer.push(setTimeout(() => {
-			td[3].style.backgroundColor = '#ffba07';
+			setYellowColor('#ffba07');
 			timer.shift();
 		}, 1500));
 		timer.push(setTimeout(() => {
-			td[2].style.backgroundColor = '#05a5ef';
+			setBlueColor('#05a5ef');
 			timer.shift();
 		}, 2000));
 		timer.push(setTimeout(() => {
-			document.getElementById(styles.new).disabled = false;
+			setDisabled(false);
 		}, 2500));
-	}
 
-	init = () => {
-		document.getElementById(styles.level).innerText = 'Level: ' + level;
+		return () => {
+			timer.forEach(clearTimeout);
+		}
+	}, [])
 
+	const init = () => {
 		queue = [];
 		processing = true;
 
-		let instance = this;
-		(function lightup(i) {
+		(function lightUp(i) {
 			timer.push(setTimeout(() => {
 				let color = Math.floor(Math.random() * 4);
 
@@ -128,21 +129,23 @@ class Simon extends React.Component {
 
 				switch (color) {
 					case 0:
-						instance.red();
+						red();
 						break;
 					case 1:
-						instance.green();
+						green();
 						break;
 					case 2:
-						instance.blue();
+						blue();
 						break;
 					case 3:
-						instance.yellow();
+						yellow();
+						break;
+					default:
 						break;
 				}
 
 				if (--i) {
-					lightup(i);
+					lightUp(i);
 				} else {
 					queue = queue.reverse();
 				}
@@ -152,41 +155,39 @@ class Simon extends React.Component {
 		}(level));
 	}
 
-	componentWillUnmount() {
-		timer.forEach(clearTimeout);
+	const Cell = (props) => {
+		return <td id={props.id} style={{ backgroundColor: props.color }} onMouseDown={() => check(+props.id)}></td>;
 	}
 
-	render() {
-		return (
-			<>
-				<header>
-					<h1><NavLink to='/'>suraj</NavLink></h1>
-					<style>{'body, table { background-color: #c1d3e3; }'}</style>
-				</header>
-				<main>
-					<table>
-						<caption>
-							<button id={styles.new} onClick={this.init}>NEW</button>
-							<label id={styles.level}>Level: 0</label>
-						</caption>
-						<tbody>
-							<tr>
-								<td id='red' onMouseDown={() => this.check(0)}></td>
-								<td id='green' onMouseDown={() => this.check(1)}></td>
-							</tr>
-							<tr>
-								<td id='blue' onMouseDown={() => this.check(3)}></td>
-								<td id='yellow' onMouseDown={() => this.check(4)}></td>
-							</tr>
-						</tbody>
-					</table>
-				</main>
-				<footer>
-					<a href='https://t.me/ZzzoOk'>ZzzoOk</a>
-				</footer>
-			</>
-		);
-	}
+	return (
+		<>
+			<header>
+				<h1><NavLink to='/'>suraj</NavLink></h1>
+				<style>{'body, table { background-color: #c1d3e3; }'}</style>
+			</header>
+			<main>
+				<table>
+					<caption>
+						<button id={styles.new} onClick={init} disabled={isDisabled}>NEW</button>
+						<label id={styles.level}>Level: {level}</label>
+					</caption>
+					<tbody>
+						<tr>
+							<Cell id='0' color={redColor} />
+							<Cell id='1' color={greenColor} />
+						</tr>
+						<tr>
+							<Cell id='2' color={blueColor} />
+							<Cell id='3' color={yellowColor} />
+						</tr>
+					</tbody>
+				</table>
+			</main>
+			<footer>
+				<a href='https://t.me/ZzzoOk'>ZzzoOk</a>
+			</footer>
+		</>
+	);
 }
 
 export default Simon;

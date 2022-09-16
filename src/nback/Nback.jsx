@@ -1,25 +1,21 @@
-import React from 'react';
-import styles from './Nback.module.css';
+import { React, useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
+import styles from './Nback.module.css';
 
-var items, interval;
-var iOrder, pOrder;
-var score, iOk, pOk;
-var scoreTimer, itemTimer;
-var nback;
+let items, interval;
+let iOrder, pOrder;
+let score, iOk, pOk;
+let scoreTimer, itemTimer;
+let nback;
 
-class Nback extends React.Component {
-	constructor(props) {
-		super(props);
-	}
+const Nback = () => {
+	const check = () => {
+		let isItem = this.id === 'item';
+		let order = isItem ? iOrder : pOrder;
+		let n = order.length - 1;
 
-	check = () => {
-		var isItem = this.id == 'item';
-		var order = isItem ? iOrder : pOrder;
-		var n = order.length - 1;
-
-		if (order[n] == order[n - nback]) {
-			this.changeScore(1);
+		if (order[n] === order[n - nback]) {
+			changeScore(1);
 
 			if (isItem) {
 				document.getElementById('item').disabled = true;
@@ -30,11 +26,11 @@ class Nback extends React.Component {
 				pOk = true;
 			}
 		} else {
-			this.changeScore(-1);
+			changeScore(-1);
 		}
 	}
 
-	changeScore = (d) => {
+	const changeScore = (d) => {
 		score += d;
 		document.getElementById(styles.score).innerText = 'Score: ' + score;
 		document.getElementById(styles.score).style.color = d > 0 ? 'green' : 'red';
@@ -45,10 +41,10 @@ class Nback extends React.Component {
 		}, 1000));
 	}
 
-	componentDidMount() {
+	useEffect(() => {
 		scoreTimer = []; itemTimer = [];
 		nback = document.getElementById('nback').value
-		var useNums = document.getElementById('numbers').checked;
+		let useNums = document.getElementById('numbers').checked;
 		items = useNums ? [1, 2, 3, 4, 5, 6, 7, 8, 9] :
 			['red', 'green', 'blue', 'yellow',
 				'magenta', 'cyan', 'orange', 'grey', 'black'];
@@ -60,20 +56,20 @@ class Nback extends React.Component {
 
 		clearInterval(interval);
 
-		var field = document.getElementById(styles.field);
-		for (var i = 0; i < 3; ++i) {
-			var row = field.insertRow(i);
-			for (var j = 0; j < 3; ++j) {
-				var cell = row.insertCell(j);
+		let field = document.getElementById(styles.field);
+		for (let i = 0; i < 3; ++i) {
+			let row = field.insertRow(i);
+			for (let j = 0; j < 3; ++j) {
+				let cell = row.insertCell(j);
 				cell.id = 'i' + (3 * i + j + 1);
 			}
 		}
 
-		var timeleft = 4;
-		var cCell = document.getElementById('i5');
+		let timeleft = 4;
+		let cCell = document.getElementById('i5');
 		cCell.innerText = '4';
 		cCell.style.color = '#cccccc';
-		var timer = setInterval(() => {
+		let timer = setInterval(() => {
 			cCell.innerText = --timeleft;
 
 			if (timeleft <= 0) {
@@ -87,20 +83,20 @@ class Nback extends React.Component {
 		iOrder = []; pOrder = [];
 		let instance = this;
 		interval = setInterval(function () {
-			var n = iOrder.length - 1;
+			let n = iOrder.length - 1;
 			if (n - nback >= 0) {
-				if (!iOk && iOrder[n] == iOrder[n - nback]) {
+				if (!iOk && iOrder[n] === iOrder[n - nback]) {
 					debugger;
 					instance.changeScore(-1);
 				}
-				if (!pOk && pOrder[n] == pOrder[n - nback]) {
+				if (!pOk && pOrder[n] === pOrder[n - nback]) {
 					debugger;
 					instance.changeScore(-1);
 				}
 			}
 
-			var pos = Math.floor(Math.random() * 9) + 1;
-			var item = Math.floor(Math.random() * 9);
+			let pos = Math.floor(Math.random() * 9) + 1;
+			let item = Math.floor(Math.random() * 9);
 
 			iOrder.push(item);
 			pOrder.push(pos);
@@ -122,42 +118,40 @@ class Nback extends React.Component {
 
 			iOk = pOk = false;
 		}, 4000);
-	}
 
-	componentWillUnmount() {
-		scoreTimer.forEach(clearTimeout);
-		itemTimer.forEach(clearTimeout);
-		clearInterval(interval);
-	}
+		return () => {
+			scoreTimer.forEach(clearTimeout);
+			itemTimer.forEach(clearTimeout);
+			clearInterval(interval);
+		}
+	})
 
-	render() {
-		return (
-			<>
-				<header>
-					<h1><NavLink to='/'>suraj</NavLink></h1>
-					<style>{'body { background-color: #c1d3e3; }'}</style>
-				</header>
-				<main id={styles.main}>
-					<table>
-						<caption>
-							<button id={styles.new} onClick={this.componentDidMount}>NEW</button>
-							<label for='nback'>N-back:</label>
-							<input id='nback' type='number' value='2' min='2' max='99' onChange={this.componentDidMount} />&nbsp;
-							<label for='numbers'>Numbers:</label>
-							<input id='numbers' type='checkbox' onChange={this.componentDidMount} />
-							<label id={styles.score}>Score: 0</label>
-						</caption>
-						<tbody id={styles.field}></tbody>
-					</table>
-					<button id='item' class={styles.bottom} onClick={this.check}>ITEM</button>&nbsp;
-					<button id='position' class={styles.bottom} onClick={this.check}>POSITION</button>
-				</main>
-				<footer>
-					<a href='https://t.me/ZzzoOk'>ZzzoOk</a>
-				</footer>
-			</>
-		);
-	}
+	return (
+		<>
+			<header>
+				<h1><NavLink to='/'>suraj</NavLink></h1>
+				<style>{'body { background-color: #c1d3e3; }'}</style>
+			</header>
+			<main id={styles.main}>
+				<table>
+					<caption>
+						<button id={styles.new} onClick={useEffect}>NEW</button>
+						<label for='nback'>N-back:</label>
+						<input id='nback' type='number' value='2' min='2' max='99' onChange={useEffect} />&nbsp;
+						<label for='numbers'>Numbers:</label>
+						<input id='numbers' type='checkbox' onChange={useEffect} />
+						<label id={styles.score}>Score: 0</label>
+					</caption>
+					<tbody id={styles.field}></tbody>
+				</table>
+				<button id='item' class={styles.bottom} onClick={check}>ITEM</button>&nbsp;
+				<button id='position' class={styles.bottom} onClick={check}>POSITION</button>
+			</main>
+			<footer>
+				<a href='https://t.me/ZzzoOk'>ZzzoOk</a>
+			</footer>
+		</>
+	);
 }
 
 export default Nback;

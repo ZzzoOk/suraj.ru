@@ -14,3 +14,9 @@
 	display: none;
 	transition: all 0.5s;
 }
+
+canvas {
+	display: block;
+	margin: auto;
+	text-align: center;
+}
