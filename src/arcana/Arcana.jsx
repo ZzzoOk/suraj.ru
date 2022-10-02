@@ -43,7 +43,7 @@ const Arcana = () => {
 		setYear(y);
 		setMonth(m);
 		setDay(d);
-		
+
 		setFourth(collapse((+y) + (+m) + (+d)));
 		setFifth(collapse((+y) + (+m) + (+d) + (+fourth)));
 	}, [date, fourth])
@@ -55,13 +55,13 @@ const Arcana = () => {
 				<style>{'body { background-color: #c1d3e3; }'}</style>
 			</header>
 			<main>
-				<input type="date" max="9999-12-31" value={date} onChange={e => setDate(e.target.value)} className={styles.date}></input><br /><br />
+				<input type='date' max='9999-12-31' value={date} onChange={e => setDate(e.target.value)} className={styles.date}></input><br /><br />
 				<div className={styles.arcana}>
-					<p>1) {arcana[+day]}</p>
-					<p>2) {arcana[+month]}</p>
-					<p>3) {arcana[+year]}</p>
-					<p>4) {arcana[+fourth]}</p>
-					<p>5) {arcana[+fifth]}</p>
+					<p title='birth day'>1) {arcana[+day]}</p>
+					<p title='month'>2) {arcana[+month]}</p>
+					<p title='year'>3) {arcana[+year]}</p>
+					<p title='1 + 2 + 3'>4) {arcana[+fourth]}</p>
+					<p title='... + 4'>5) {arcana[+fifth]}</p>
 				</div>
 			</main>
 			<footer>
