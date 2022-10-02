@@ -7,11 +7,13 @@ const Arcana = () => {
 	const [day, setDay] = useState('');
 	const [month, setMonth] = useState('');
 	const [year, setYear] = useState('');
-	const [next, setNext] = useState('');
+	const [fourth, setFourth] = useState('');
+	const [fifth, setFifth] = useState('');
+
 	const arcana = {
 		1: 'I Маг', 2: 'II Жрица', 3: 'III Императрица', 4: 'IV Император', 5: 'V Иерофант',
-		6: 'VI Влюблённые', 7: 'VII Колесница', 8: 'VIII Справедливость', 9: 'IX Отшельник', 10: 'X Колесо Фортуны',
-		11: 'XI Сила', 12: 'XII Повешенный', 13: 'XIII Смерть', 14: 'XIV Умеренность', 15: 'XV Дьявол',
+		6: 'VI Влюблённые', 7: 'VII Колесница', 8: 'VIII Сила', 9: 'IX Отшельник', 10: 'X Колесо Фортуны',
+		11: 'XI Справедливость', 12: 'XII Повешенный', 13: 'XIII Смерть', 14: 'XIV Умеренность', 15: 'XV Дьявол',
 		16: 'XVI Башня', 17: 'XVII Звезда', 18: 'XVIII Луна', 19: 'XIX Солнце', 20: 'XX Суд',
 		21: 'XXI Мир', 22: 'XXII Шут'
 	};
@@ -41,8 +43,10 @@ const Arcana = () => {
 		setYear(y);
 		setMonth(m);
 		setDay(d);
-		setNext(collapse((+y) + (+m) + (+d)));
-	}, [date])
+		
+		setFourth(collapse((+y) + (+m) + (+d)));
+		setFifth(collapse((+y) + (+m) + (+d) + (+fourth)));
+	}, [date, fourth])
 
 	return (
 		<>
@@ -56,7 +60,8 @@ const Arcana = () => {
 					<p>1) {arcana[+day]}</p>
 					<p>2) {arcana[+month]}</p>
 					<p>3) {arcana[+year]}</p>
-					<p>4) {arcana[+next]}</p>
+					<p>4) {arcana[+fourth]}</p>
+					<p>5) {arcana[+fifth]}</p>
 				</div>
 			</main>
 			<footer>
